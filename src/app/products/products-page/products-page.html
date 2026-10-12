@@ -1,9 +1,21 @@
 <h2>Products</h2>
-<div class="grid">
-  @for (p of catalog.products; track p.id) {
-    <div class="product">
-      <app-product-card [productId]="p.id" [name]="p.name" [price]="p.price" (addToCart)="cart.add($event)" />
-      <a [routerLink]="['/products', p.id]">Details</a>
-    </div>
-  }
+
+<div class="search">
+  <input #box type='search' aria-label="Search products" placeholder="Search products" [value]="catalog.query()" (input)="catalog.onChange(box.value)" />
 </div>
+
+@if (catalog.list.isLoading()) {
+  <p>Loading products...</p>
+} @else if (catalog.list.error()) {
+  <p>Could not load products.</p>
+  <button (click)="catalog.list.reload()">Try again</button>
+} @else {
+  <div class="grid">
+    @for (p of catalog.products(); track p.id) {
+      <div class="product">
+        <app-product-card [productId]="p.id" [name]="p.title" [price]="p.price" (addToCart)="cart.add($event)" />
+        <a [routerLink]="['/products', p.id]">Details</a>
+      </div>
+    }
+  </div>
+}

@@ -1,8 +1,9 @@
-import { Component, inject} from '@angular/core';
-import { Cart } from '../../cart/cart';
-import { ProductCard } from '../product-card/product-card';
-import { ProductCatalog } from '../product-catalog';
 import { RouterLink } from '@angular/router';
+import { Component, inject, signal} from '@angular/core';
+
+import { Cart } from '../../cart/cart';
+import { ProductCatalog } from '../product-catalog';
+import { ProductCard } from '../product-card/product-card';
 
 @Component({
   imports: [RouterLink, ProductCard],

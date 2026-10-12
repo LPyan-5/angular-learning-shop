@@ -3,4 +3,7 @@
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 20px;
   }
-  .product { display: flex; flex-direction: column; gap: 8px; }
+.product { display: flex; flex-direction: column; gap: 8px; }
+
+.search { margin-bottom: 20px; }
+.search input { width: 100%; max-width: 360px; }
