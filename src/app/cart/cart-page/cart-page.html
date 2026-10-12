@@ -1,0 +1,9 @@
+<h2>Cart</h2>
+
+@for (item of cart.items(); track item.id) {
+  <p>{{ item.name }} x {{ item.quantity }}</p>
+  <button (click)="cart.remove(item.id)">Remove</button>
+}
+@empty {
+  <p>Cart is empty</p>
+}

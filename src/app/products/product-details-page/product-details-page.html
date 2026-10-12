@@ -1,0 +1,9 @@
+<a routerLink="/">← Back to products</a>
+
+@if (product(); as p) {
+  <h2>{{ p.name }}</h2>
+  <p>{{ p.price | currency }}</p>
+  <button (click)="cart.add({ id: p.id, name: p.name, quantity: 1, price: p.price })">Add to cart</button>
+} @else {
+  <p>Product not found</p>
+}

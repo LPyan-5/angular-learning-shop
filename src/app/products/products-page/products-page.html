@@ -1,0 +1,4 @@
+@for (p of catalog.products; track p.id) {
+  <app-product-card [productId]="p.id" [name]="p.name" [price]="p.price" (addToCart)="cart.add($event)" />
+  <a [routerLink]="['/products', p.id]">Details</a>
+}

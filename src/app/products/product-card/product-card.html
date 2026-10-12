@@ -1,0 +1,19 @@
+<div class="card">
+    <h3>{{ name() }}</h3>
+
+    <button (click)="decrease()">-</button>
+
+    <span>{{ quantity() }}</span>
+
+    <button (click)="increase()">+</button>
+
+
+    <p>Total: {{ total() | currency }}</p>
+
+    
+    @if (quantity() > 0) {
+      <button (click)="addToCart.emit({id: productId(), name: name(), quantity: quantity(), price: price()})">Add to cart</button>
+    }
+
+    <button [disabled]="!quantity()" (click)="clear()" >Clear</button>
+</div>
