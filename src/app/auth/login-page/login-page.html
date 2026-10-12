@@ -1,4 +1,8 @@
-<h2>Log in</h2>
-<p>Log in to see your cart.</p>
-<button (click)="login('user')">Log in as user</button>
-<button (click)="login('admin')">Log in as admin</button>
+<div class="panel">
+    <h2>Log in</h2>
+    <p>Log in to see your cart.</p>
+    <div class="actions">
+      <button (click)="login('user')">Log in as user</button>
+      <button class="secondary" (click)="login('admin')">Log in as admin</button>
+    </div>
+  </div>

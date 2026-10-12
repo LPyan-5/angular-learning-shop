@@ -1,17 +1,22 @@
-<nav>
-  @if (auth.isLoggedIn()) {
-    <span>Hi, {{ auth.user()?.name }}</span>
-    @if (auth.isAdmin()) {
-      <a routerLink="/admin">Admin</a>
-    }
-    <button (click)="auth.logout()">Log out</button>
-  } @else {
-    <a routerLink="/login">Log in</a>
-  }
-  
+<nav class="navbar">
+  <a class="brand" routerLink="/">Learning Shop</a>
   <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Products</a>
   <a routerLink="/cart" routerLinkActive="active">Cart</a>
   <app-cart-summary />
+
+  <div class="auth">
+    @if (auth.isLoggedIn()) {
+      <span>Hi, {{ auth.user()?.name }}</span>
+      @if (auth.isAdmin()) {
+        <a routerLink="/admin" routerLinkActive="active">Admin</a>
+      }
+      <button class="secondary" (click)="auth.logout()">Log out</button>
+    } @else {
+      <a routerLink="/login">Log in</a>
+    }
+  </div>
 </nav>
 
-<router-outlet />
+<main class="page">
+  <router-outlet />
+</main>

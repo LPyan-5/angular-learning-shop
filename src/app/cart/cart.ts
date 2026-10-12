@@ -24,7 +24,12 @@ export class Cart {
   }
 
   add(item: CartItem) {
-    this.items.update(items => [...items, item]);
+    this.items.update(items => {
+      const exists = items.some(i => i.id === item.id);
+      return exists
+        ? items.map(i => (i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i))
+        : [...items, item];
+    });
   }
 
   remove(id: number) {

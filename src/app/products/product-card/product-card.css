@@ -1,0 +1,16 @@
+:host { display: block; }
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+h3 { margin: 0; }
+.price { margin: 0; color: var(--color-muted); }
+.quantity { display: flex; align-items: center; gap: 12px; }
+.quantity span { min-width: 24px; text-align: center; font-weight: 600; }
+.total { margin: 0; font-weight: 600; }
+.actions { display: flex; gap: 8px; }

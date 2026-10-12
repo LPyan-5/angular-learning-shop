@@ -1,19 +1,19 @@
 <div class="card">
-    <h3>{{ name() }}</h3>
+  <h3>{{ name() }}</h3>
+  <p class="price">{{ price() | currency }}</p>
 
-    <button (click)="decrease()">-</button>
-
+  <div class="quantity">
+    <button class="secondary" (click)="decrease()">-</button>
     <span>{{ quantity() }}</span>
+    <button class="secondary" (click)="increase()">+</button>
+  </div>
 
-    <button (click)="increase()">+</button>
+  <p class="total">Total: {{ total() | currency }}</p>
 
-
-    <p>Total: {{ total() | currency }}</p>
-
-    
-    @if (quantity() > 0) {
+  @if (quantity() > 0) {
+    <div class="actions">
       <button (click)="addToCart.emit({id: productId(), name: name(), quantity: quantity(), price: price()})">Add to cart</button>
-    }
-
-    <button [disabled]="!quantity()" (click)="clear()" >Clear</button>
+      <button class="secondary" (click)="clear()">Clear</button>
+    </div>
+  }
 </div>

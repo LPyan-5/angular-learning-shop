@@ -1,0 +1,9 @@
+:host {
+    background: #eef2ff;
+    color: var(--color-primary);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  p { margin: 0; }

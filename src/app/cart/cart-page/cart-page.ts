@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { Cart } from '../cart';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
-  imports: [],
+  imports: [CurrencyPipe],
   selector: 'app-cart-page',
   styleUrl: './cart-page.css',
   templateUrl: './cart-page.html',

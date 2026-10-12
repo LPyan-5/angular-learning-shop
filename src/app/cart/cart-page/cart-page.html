@@ -1,9 +1,15 @@
 <h2>Cart</h2>
 
 @for (item of cart.items(); track item.id) {
-  <p>{{ item.name }} x {{ item.quantity }}</p>
-  <button (click)="cart.remove(item.id)">Remove</button>
+  <div class="row">
+    <span class="name">{{ item.name }}</span>
+    <span>{{ item.quantity }} × {{ item.price | currency }}</span>
+    <button class="danger" (click)="cart.remove(item.id)">Remove</button>
+  </div>
+} @empty {
+  <p class="empty">Your cart is empty.</p>
 }
-@empty {
-  <p>Cart is empty</p>
+
+@if (cart.items().length > 0) {
+  <p class="total">Total: {{ cart.total() | currency }}</p>
 }

@@ -1,4 +1,9 @@
-@for (p of catalog.products; track p.id) {
-  <app-product-card [productId]="p.id" [name]="p.name" [price]="p.price" (addToCart)="cart.add($event)" />
-  <a [routerLink]="['/products', p.id]">Details</a>
-}
+<h2>Products</h2>
+<div class="grid">
+  @for (p of catalog.products; track p.id) {
+    <div class="product">
+      <app-product-card [productId]="p.id" [name]="p.name" [price]="p.price" (addToCart)="cart.add($event)" />
+      <a [routerLink]="['/products', p.id]">Details</a>
+    </div>
+  }
+</div>
