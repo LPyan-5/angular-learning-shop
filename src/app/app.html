@@ -1,4 +1,11 @@
 <nav>
+  @if (auth.isLoggedIn()) {
+    <span>Hi, {{ auth.user() }}</span>
+    <button (click)="auth.logout()">Log out</button>
+  } @else {
+    <a routerLink="/login">Log in</a>
+  }
+  
   <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Products</a>
   <a routerLink="/cart" routerLinkActive="active">Cart</a>
   <app-cart-summary />
