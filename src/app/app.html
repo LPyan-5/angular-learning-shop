@@ -1,6 +1,9 @@
 <nav>
   @if (auth.isLoggedIn()) {
-    <span>Hi, {{ auth.user() }}</span>
+    <span>Hi, {{ auth.user()?.name }}</span>
+    @if (auth.isAdmin()) {
+      <a routerLink="/admin">Admin</a>
+    }
     <button (click)="auth.logout()">Log out</button>
   } @else {
     <a routerLink="/login">Log in</a>

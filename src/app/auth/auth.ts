@@ -1,8 +1,9 @@
 import { computed, effect, inject, Service, signal } from '@angular/core';
 import { Router } from '@angular/router';
+import { Role, User } from './user';
 
 
-function loadUser(): string | null {
+function loadUser(): User | null {
     try {
       const saved = localStorage.getItem('user');
       return saved ? JSON.parse(saved) : null;
@@ -13,12 +14,13 @@ function loadUser(): string | null {
 
 @Service()
 export class Auth {
-  private readonly _user = signal<string | null>(loadUser());
+  private readonly _user = signal<User | null>(loadUser());
 
   private readonly router = inject(Router);
 
   readonly user = this._user.asReadonly();
   readonly isLoggedIn = computed(() => this._user() !== null);
+  readonly isAdmin = computed(() => this._user()?.role === 'admin');
 
   constructor() {    
     effect(() => {
@@ -31,8 +33,12 @@ export class Auth {
       });
   }
 
-  login(name: string) {
-    this._user.set(name);
+  hasRole(role: Role) {
+    return this._user()?.role === role;
+  }
+
+  login(name: string, role: Role) {
+    this._user.set({name, role});
   }
 
   logout() {

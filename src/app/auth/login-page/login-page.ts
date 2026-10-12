@@ -1,6 +1,7 @@
 import { Component, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth } from '../auth';
+import { Role } from '../user';
 
 @Component({
   imports: [],
@@ -14,8 +15,8 @@ export class LoginPage {
 
   readonly returnUrl = input('/');
 
-  protected login() {
-    this.auth.login('Liana');
+  protected login(role: Role) {
+    this.auth.login(role === 'admin' ? 'Admin Anna' : 'User Liana', role);
     this.router.navigateByUrl(this.returnUrl());
   }
 }
